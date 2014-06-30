@@ -96,7 +96,7 @@ static struct s3c2410_uartcfg mini2440_uartcfgs[] __initdata = {
 		.hwport	     = 2,
 		.flags	     = 0,
 		.ucon	     = 0x3c5,
-		.ulcon	     = 0x03,
+		.ulcon	     = 0x03, //把uart2改为普通串口
 		.ufcon	     = 0x51,
 	}
 };

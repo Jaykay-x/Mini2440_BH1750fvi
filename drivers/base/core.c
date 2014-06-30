@@ -859,8 +859,7 @@ int device_private_init(struct device *dev)
 	if (!dev->p)
 		return -ENOMEM;
 	dev->p->device = dev;
-	klist_init(&dev->p->klist_children, klist_children_get,
-		   klist_children_put);
+	klist_init(&dev->p->klist_children, klist_children_get,klist_children_put);
 	return 0;
 }
 

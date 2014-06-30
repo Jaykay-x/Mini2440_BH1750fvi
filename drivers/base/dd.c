@@ -410,7 +410,8 @@ void dev_set_drvdata(struct device *dev, void *data)
 
 	if (!dev)
 		return;
-	if (!dev->p) {
+	if (!dev->p) 
+	{
 		error = device_private_init(dev);
 		if (error)
 			return;

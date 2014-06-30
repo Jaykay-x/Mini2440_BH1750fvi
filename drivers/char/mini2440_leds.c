@@ -40,16 +40,14 @@ static unsigned int led_cfg_table [] = {
 	S3C2410_GPIO_OUTPUT,
 };
 
-static int sbc2440_leds_ioctl(
-	struct inode *inode, 
-	struct file *file, 
-	unsigned int cmd, 
-	unsigned long arg)
+static int sbc2440_leds_ioctl(struct inode *inode,struct file *file,unsigned int cmd,unsigned long arg)
 {
-	switch(cmd) {
+	switch(cmd) 
+	{
 	case 0:
 	case 1:
-		if (arg > 4) {
+		if (arg > 4) 
+		{
 			return -EINVAL;
 		}
 		s3c2410_gpio_setpin(led_table[arg], !cmd);
@@ -76,7 +74,8 @@ static int __init dev_init(void)
 
 	int i;
 	
-	for (i = 0; i < 4; i++) {
+	for (i = 0; i < 4; i++) 
+	{
 		s3c2410_gpio_cfgpin(led_table[i], led_cfg_table[i]);
 		s3c2410_gpio_setpin(led_table[i], 0);
 	}

@@ -131,20 +131,27 @@ struct pwm_device *pwm_request(int pwm_id, const char *label)
 
 	mutex_lock(&pwm_lock);
 
-	list_for_each_entry(pwm, &pwm_list, node) {
-		if (pwm->pwm_id == pwm_id) {
+	//循环遍历
+	list_for_each_entry(pwm, &pwm_list, node) 
+	{
+		if (pwm->pwm_id == pwm_id) 
+		{
 			found = 1;
 			break;
 		}
 	}
 
-	if (found) {
-		if (pwm->use_count == 0) {
+	if (found) 
+	{
+		if (pwm->use_count == 0) 
+		{
 			pwm->use_count++;
 			pwm->label = label;
-		} else
+		} 
+		else
 			pwm = ERR_PTR(-EBUSY);
-	} else
+	} 
+	else
 		pwm = ERR_PTR(-ENOENT);
 
 	mutex_unlock(&pwm_lock);
