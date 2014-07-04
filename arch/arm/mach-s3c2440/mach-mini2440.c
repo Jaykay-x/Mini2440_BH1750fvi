@@ -69,6 +69,23 @@
 
 
 #include <sound/s3c24xx_uda134x.h>
+#include <plat/gpio-cfg.h>
+#include <linux/i2c-gpio.h>
+
+static struct i2c_gpio_platform_data i2c_gpio={
+	.sda_pin = S3C2410_GPE(15),
+	.scl_pin = S3C2410_GPE(14),
+	.udelay  = 10,
+	.timeout = 100,
+};
+
+static struct platform_device i2c_gpio_device = {
+		.name = "i2c-gpio",
+		.id   = 5,
+		.dev  = {
+			.platform_data = &i2c_gpio,
+		},
+};
 
 static struct map_desc mini2440_iodesc[] __initdata = {
 };
@@ -340,6 +357,7 @@ static struct s3c24xx_mci_pdata mini2440_mmc_cfg = {
 /* devices we initialise */
 
 static struct platform_device *mini2440_devices[] __initdata = {
+	//&i2c_gpio_device,
 	&s3c_device_usb,
 	&s3c_device_rtc,
 	&s3c_device_lcd,
@@ -351,6 +369,7 @@ static struct platform_device *mini2440_devices[] __initdata = {
 	&s3c_device_nand,
 	&s3c_device_sdi,
 	&s3c_device_usbgadget,
+	&i2c_gpio_device,
 };
 
 static void __init mini2440_map_io(void)

@@ -60,6 +60,14 @@ config I2C_HELPER_AUTO
 
 	  In doubt, say Y.
 
+
+config GPIO_I2C_BH1750FVI
+	tristate "Driver for BH1750FVI"
+	depends on MACH_MINI2440
+	default y if MACH_MINI2440
+	help
+	  Driver for Bh1750fvi (i2c-gpio bus)
+
 source drivers/i2c/algos/Kconfig
 source drivers/i2c/busses/Kconfig
 source drivers/i2c/chips/Kconfig

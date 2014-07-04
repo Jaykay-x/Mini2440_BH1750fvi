@@ -87,6 +87,14 @@ config GPIO_VR41XX
 
 comment "I2C GPIO expanders:"
 
+#config GPIO_I2C_BH1750FVI
+#	tristate "Driver for BH1750FVI"
+#	depends on MACH_MINI2440
+#	default y if MACH_MINI2440
+#	help
+#	  Driver for Bh1750fvi (i2c-gpio bus)
+
+
 config GPIO_MAX732X
 	tristate "MAX7319, MAX7320-7327 I2C Port Expanders"
 	depends on I2C
