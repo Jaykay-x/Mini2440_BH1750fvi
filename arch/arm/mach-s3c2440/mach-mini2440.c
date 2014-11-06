@@ -73,7 +73,9 @@
 #include <linux/i2c-gpio.h>
 
 static struct i2c_gpio_platform_data i2c_gpio={
-	.sda_pin = S3C2410_GPE(15),
+	//这里需要用S3C2440_GPE去配置一下GPIO的14，15口为i2c接口
+	//否则GPIO用不了
+	.sda_pin = S3C2410_GPE(15), 
 	.scl_pin = S3C2410_GPE(14),
 	.udelay  = 10,
 	.timeout = 100,
